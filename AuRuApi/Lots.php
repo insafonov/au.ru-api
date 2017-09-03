@@ -49,8 +49,10 @@ class Lots
 			return null;
 		elseif ($code === 401)
 			throw new Exception('You have not valid authentication credentials.');
+		elseif ($code)
+			throw new Exception("Search error/ HTTP status $code, " . print_r($searchParams, true));
 		else
-			throw new Exception();
+			throw new Exception('Network error');
 	}
 
 	public function update($id, $params)
@@ -91,8 +93,10 @@ class Lots
 			return true;
 		elseif ($code === 401)
 			throw new Exception('You have not valid authentication credentials.');
+		elseif ($code)
+			throw new Exception("Update error. HTTP status: $code, problem lot id: $id, params: " . print_r($params, true));
 		else
-			throw new Exception();
+			throw new Exception('Network error');
 	}
 
 	public function close($id, $params = [])
@@ -129,8 +133,10 @@ class Lots
 			return true;
 		elseif ($code === 401)
 			throw new Exception('You have not valid authentication credentials.');
+		elseif ($code)
+			throw new Exception("Close error. HTTP status: $code, problem lot id: $id, params: " . print_r($params, true));
 		else
-			throw new Exception();
+			throw new Exception('Network error');
 	}
 
 	public function repeat($id)
@@ -155,7 +161,9 @@ class Lots
 			return true;
 		elseif ($code === 401)
 			throw new Exception('You have not valid authentication credentials.');
+		elseif ($code)
+			throw new Exception("Repeat error. HTTP status: $code, lot id: $id");
 		else
-			throw new Exception();
+			throw new Exception('Network error');
 	}
 }
