@@ -1,7 +1,7 @@
 {
     "name": "insafonov/au.ru-api",
 	"description": "Unofficial PHP library for au.ru auction API",
-	"keywords": ["api","au.ru"],
+	"keywords": ["api", "au.ru"],
     "type": "library",
     "license": "MIT",
     "authors": [
@@ -20,6 +20,6 @@
 		"php": ">=5.3.3"
 	},
 	"autoload": {
-        "psr-4": { "INSafonov\\": "" }
+        "psr-0": { "INSafonov\\": "" }
     }
 }
