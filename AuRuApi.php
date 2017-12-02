@@ -1,9 +1,12 @@
 <?php
 namespace INSafonov;
 
+use AuRuApi\Lots;
+
 class AuRuApi
 {
 	private $token;
+	public $baseUrl = 'https://apidemo.au.ru';
 	public $lots;
 
 	public function sendRequest($requestData)
@@ -27,7 +30,7 @@ class AuRuApi
 
 		$context = stream_context_create($opts);
 
-		$response = @file_get_contents('https://apidemo.au.ru/v1/' . ltrim($requestData['path'], '/'), false, $context);
+		$response = @file_get_contents("$baseUrl/v1/" . ltrim($requestData['path'], '/'), false, $context);
 
 		$code = $this->getResponseCode($http_response_header);
 
@@ -53,6 +56,6 @@ class AuRuApi
 		if (array_key_exists('token', $params))
 			$this->token = $params['token'];
 
-		$this->lots = new AuRuApi\Lots($this, ['token' => $this->token]);
+		$this->lots = new Lots($this, ['token' => $this->token]);
 	}
 }
