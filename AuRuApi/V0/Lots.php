@@ -1,5 +1,7 @@
 <?php
-namespace INSafonov\AuRuApi;
+namespace INSafonov\AuRuApi\V0;
+
+use INSafonov\AuRuApi\Exception;
 
 class Lots
 {
