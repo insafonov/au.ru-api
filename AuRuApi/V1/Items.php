@@ -50,10 +50,8 @@ class Items
 			throw new Exception('Внутреняя ошибка сервера');
 		elseif ($code === 501)
 			throw new Exception('Запрошенный ресурс устарел и больше не используется');
-		elseif ($code)
-			throw new Exception("Search error/ HTTP status $code, " . var_export($params, true));
 		else
-			throw new Exception('Network error');
+			throw new Exception("Search error/ HTTP status $code, " . var_export($params, true));
 	}
 
 	/**
@@ -86,10 +84,8 @@ class Items
 			throw new Exception('Внутреняя ошибка сервера');
 		elseif ($code === 501)
 			throw new Exception('Запрошенный ресурс устарел и больше не используется');
-		elseif ($code)
-			throw new Exception("Create error/ HTTP status $code, " . var_export($lot, true));
 		else
-			throw new Exception('Network error');
+			throw new Exception("Create error/ HTTP status $code, " . var_export($lot, true));
 	}
 
 	/**
@@ -120,9 +116,7 @@ class Items
 			throw new Exception('Внутреняя ошибка сервера');
 		elseif ($code === 501)
 			throw new Exception('Запрошенный ресурс устарел и больше не используется');
-		elseif ($code)
-			throw new Exception("Search error/ HTTP status $code, " . var_export($items, true));
 		else
-			throw new Exception('Network error');
+			throw new Exception("Search error/ HTTP status $code, " . var_export($items, true));
 	}
 }

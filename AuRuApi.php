@@ -1,6 +1,8 @@
 <?php
 namespace INSafonov;
 
+use INSafonov\AuRuApi\Exception;
+
 class AuRuApi
 {
 	protected $token;
@@ -19,6 +21,7 @@ class AuRuApi
 			'http' => [
 				'method' => $method,
 				'header' => implode("\r\n", $headers),
+				'ignore_errors' => true,
 			]
 		];
 
@@ -31,10 +34,11 @@ class AuRuApi
 
 		$code = $this->getResponseCode($http_response_header);
 
-		if ($code === false)
-			return false;
-		else
+		if ($code === false) {
+			throw new Exception(error_get_last());
+		} else {
 			return [$code, $response];
+		}
 	}
 
 	protected function getResponseCode($headers)
